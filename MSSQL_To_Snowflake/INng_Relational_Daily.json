@@ -1,0 +1,167 @@
+{
+  "eventTime": "2025-12-12T13:34:28.112Z",
+  "producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+  "schemaURL": "https://openlineage.io/spec/2-0-2/OpenLineage.json#/$defs/RunEvent",
+  "eventType": "START",
+   "run": {
+      "runId": "62b33e6d-0dd6-415e-959c-92829ba16aa9",
+      "facets": {
+          "parent": {
+              "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+              "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/ParentRunFacet.json#/$defs/ParentRunFacet",
+              "run": {
+                  "runId": "62b33e6d-0dd6-415e-959c-92829ba16aa9"
+              },
+              "job": {
+                  "namespace": "noeffect_demo",
+                  "name": "noeffect_openlineage_simple_test"
+              }
+          }
+  }},
+  "job": {
+      "namespace": "ING_RELATIONAL",
+      "name": "INng_Relational_Daily"
+  },
+"inputs": [
+  {
+    "namespace": "sqlserver://3.12.123.444:1433",
+    "name": "HR_DB.dbo.EMPLOYEES",
+    "facets": {
+      "dataSource": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/DatasourceDatasetFacet.json#/$defs/DatasourceDatasetFacet",
+        "name": "NA",
+        "uri": "NA"
+      },
+        "datasetType": {
+              "_producer": "https://some.producer.com/version/1.0",
+              "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/DatasetTypeDatasetFacet.json",
+              "datasetType": "TABLE",
+              "subType": "EXTERNAL"
+          },
+      "schema": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-1-0/SchemaDatasetFacet.json#/$defs/SchemaDatasetFacet",
+        "fields": [
+          { "name": "TRUIST_EMPLOYEE_COST_CENTER__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_TEAMMATE__C", "type": "VARCHAR(100)" },
+          { "name": "AOPF_FULL_NAME__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_TEAMMATE_ID__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_LOGON_ID__C", "type": "VARCHAR(100)" },
+          { "name": "ZIP__C", "type": "VARCHAR(100)" },
+          { "name": "WORK_EMAIL__C", "type": "VARCHAR(100)" }
+        ]
+      }
+    },
+    "inputFacets": {}
+  }
+],
+"outputs": [
+  {
+    "namespace": "snowflake://myorg-myacc1.snowflakecomputing.com:443",
+    "name": "HR_ANALYTICS.PUBLIC.EMPLOYEES",
+    "facets": {
+      "dataSource": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/DatasourceDatasetFacet.json#/$defs/DatasourceDatasetFacet",
+        "name": "NA",
+        "uri": "NA"
+      },
+        "datasetType": {
+              "_producer": "https://some.producer.com/version/1.0",
+              "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/DatasetTypeDatasetFacet.json",
+              "datasetType": "TABLE",
+              "subType": "EXTERNAL"
+          },
+      "schema": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-1-0/SchemaDatasetFacet.json#/$defs/SchemaDatasetFacet",
+        "fields": [
+          { "name": "TRUIST_EMPLOYEE_COST_CENTER__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_TEAMMATE__C", "type": "VARCHAR(100)" },
+          { "name": "AOPF_FULL_NAME__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_TEAMMATE_ID__C", "type": "VARCHAR(100)" },
+          { "name": "TRUIST_LOGON_ID__C", "type": "VARCHAR(100)" },
+          { "name": "ZIP__C", "type": "VARCHAR(100)" },
+          { "name": "WORK_EMAIL__C", "type": "VARCHAR(100)" }
+        ]
+      },
+      "columnLineage": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-1/ColumnLineageDatasetFacet.json#/$defs/ColumnLineageDatasetFacet",
+        "fields": {
+          "TRUIST_EMPLOYEE_COST_CENTER__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.cost",
+                "field": "TRUIST_EMPLOYEE_COST_CENTER__C"
+              }
+            ]
+          },
+          "TRUIST_TEAMMATE__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.teammate",
+                "field": "TRUIST_TEAMMATE__C"
+              }
+            ]
+          },
+          "AOPF_FULL_NAME__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.aopf",
+                "field": "AOPF_FULL_NAME__C"
+              }
+            ]
+          },
+          "TRUIST_TEAMMATE_ID__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.id",
+                "field": "TRUIST_TEAMMATE_ID__C"
+              }
+            ]
+          },
+          "TRUIST_LOGON_ID__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.logon",
+                "field": "TRUIST_LOGON_ID__C"
+              }
+            ]
+          },
+          "ZIP__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.zip",
+                "field": "ZIP__C"
+              }
+            ]
+          },
+          "WORK_EMAIL__C": {
+            "inputFields": [
+              {
+                "namespace": "sqlserver://3.12.123.444:1433",
+                "name": "ADV_T_PWM_EMPLOYEES__C.adv.mail",
+                "field": "WORK_EMAIL__C"
+              }
+            ]
+          }
+        }
+      },
+      "lifecycleStateChange": {
+        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/1.12.0/integration/spark",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/LifecycleStateChangeDatasetFacet.json#/$defs/LifecycleStateChangeDatasetFacet",
+        "lifecycleStateChange": "APPEND"
+      }
+    },
+    "outputFacets": {}
+  }
+]
+}
