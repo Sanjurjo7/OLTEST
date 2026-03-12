@@ -1,3 +1,9 @@
+/* Dynamically set library to the repo folder */
+%let root = %sysget(SAS_EXECFILEPATH);
+%let root = %sysfunc(tranwrd(&root, customers.sas, ));
+
+libname mylib "&root";
+
 /* Define macro */
 %macro customer_report(input_table=, output_table=);
 
